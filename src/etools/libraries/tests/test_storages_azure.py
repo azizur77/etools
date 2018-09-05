@@ -1,12 +1,12 @@
 import os
 from datetime import datetime
 from io import BytesIO
-from unittest.mock import Mock
 from urllib.parse import urlparse
 
 from django.test import override_settings, TestCase
 
 import responses
+from mock import Mock
 from storages.utils import setting
 
 from etools.libraries.azure_storage_backend import EToolsAzureStorage
