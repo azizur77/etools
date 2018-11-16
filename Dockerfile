@@ -1,4 +1,4 @@
-FROM python:3.6.4-alpine as builder
+FROM python:3.7.3-alpine as builder
 
 RUN echo "http://dl-3.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
 RUN apk update
@@ -39,7 +39,7 @@ ADD Pipfile.lock .
 RUN pipenv install --system  --ignore-pipfile --deploy
 
 
-FROM python:3.6.4-alpine
+FROM python:3.7.3-alpine
 
 RUN echo "http://dl-3.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
 RUN apk update
