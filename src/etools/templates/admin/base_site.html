@@ -124,9 +124,11 @@
         var host = {
             'localhost'                : 'Local Testing Environment',
             'etools-dev.unicef.org'    : 'Develop Testing Environment',
-            'etools-staging.unicef.org': 'Staging Testing Environment'
+            'etools-staging.unicef.org': 'Staging Testing Environment',
+            'etools-demo.unicef.org'   : 'Demo Testing Environment',
+            'etools-testing.unicef.org'   : 'Engineering Testing Environment'
         };
-        var cond = /localhost|etools-dev|etools-staging/g;
+        var cond = /localhost|etools-dev|etools-staging|etools-demo|etools-testing/g;
         if (cond.test(window.location)) {
             $('#header').css({'background': '#BE1A1A'});
             $('#test-text').show().text(' ' + host[window.location.hostname]);
