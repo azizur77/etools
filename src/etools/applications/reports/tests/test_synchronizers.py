@@ -2,6 +2,8 @@
 import datetime
 import json
 
+from unicef_vision.loaders import VISION_NO_DATA_MESSAGE
+
 from etools.applications.EquiTrack.tests.cases import BaseTenantTestCase
 from etools.applications.reports.models import CountryProgramme, Indicator, Result, ResultType
 from etools.applications.reports.tests.factories import (CountryProgrammeFactory, IndicatorFactory,
@@ -380,13 +382,13 @@ class TestProgrammeSynchronizer(BaseTenantTestCase):
             "PROGRAMME_AREA_CODE": "",
             "PROGRAMME_AREA_NAME": "",
         }
-        self.adapter = synchronizers.ProgrammeSynchronizer(self.country)
+        self.adapter = synchronizers.ProgrammeSynchronizer(self.country.business_area_code)
 
     def test_get_json(self):
         data = {"test": "123"}
         self.assertEqual(self.adapter._get_json(data), data)
         self.assertEqual(
-            self.adapter._get_json(synchronizers.VISION_NO_DATA_MESSAGE),
+            self.adapter._get_json(VISION_NO_DATA_MESSAGE),
             []
         )
 
@@ -587,7 +589,7 @@ class TestRAMSynchronizer(BaseTenantTestCase):
             "BASELINE": "BLINE",
             "TARGET": "Target",
         }
-        self.adapter = synchronizers.RAMSynchronizer(self.country)
+        self.adapter = synchronizers.RAMSynchronizer(self.country.business_area_code)
 
     def test_convert_records(self):
         records = json.dumps([self.data])
