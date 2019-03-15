@@ -3,10 +3,8 @@ import pytest
 
 def pytest_configure(config):
     from django.conf import settings
-    settings.INSTALLED_APPS = settings.INSTALLED_APPS + (
-        'etools.applications.utils.permissions.tests',
+    settings.INSTALLED_APPS += (
         'etools.applications.permissions2.tests',
-        'etools.applications.utils.common.tests.test_utils',
     )
     settings.POST_OFFICE = {
         'DEFAULT_PRIORITY': 3,
@@ -16,13 +14,6 @@ def pytest_configure(config):
             'default': 'django.core.mail.backends.locmem.EmailBackend'
         }
     }
-    settings.TEST_NON_SERIALIZED_APPS = [
-        # These apps contains test models that haven't been created by migration.
-        # So on the serialization stage these models do not exist.
-        'etools.applications.utils.permissions.tests',
-        'etools.applications.utils.common',
-        'etools.applications.utils.writable_serializers',
-    ]
 
     settings.PASSWORD_HASHERS = [
         'django.contrib.auth.hashers.MD5PasswordHasher',

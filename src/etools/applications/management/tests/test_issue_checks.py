@@ -10,7 +10,7 @@ from etools.applications.management.models import (FlaggedIssue, ISSUE_STATUS_NE
 from etools.applications.management.tests.factories import FlaggedIssueFactory
 from etools.applications.partners.models import PartnerOrganization
 from etools.applications.partners.tests.factories import PartnerFactory
-from etools.libraries.utils import fqn
+from etools.libraries.pythonlib.fqn import fqn
 
 
 class PartnersMustHaveShortNameTestCheck(checks.BaseIssueCheck):
